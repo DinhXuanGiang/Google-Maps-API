@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>exerciseAPI</title>
+    <title>Google Maps API</title>
     <style>
         #map {
             height: 100%;
@@ -29,7 +29,7 @@
                 position: uluru,
                 map: map,
 
-                animation: google.maps.Animation.BOUNCE,
+                animation: google.maps.Animation.DROP,
                 icon: {
                     url: "logogtvt.png",
                     scaledSize: { width: 90, height: 90 },
@@ -40,7 +40,7 @@
                 position: uluru1,
                 map: map,
 
-                animation: google.maps.Animation.BOUNCE,
+                animation: google.maps.Animation.DROP,    
                 icon: {
                     url: "my_avatar.png",
                     scaledSize: { width: 90, height: 90 },
@@ -53,9 +53,9 @@
 
             var request = {
                 origin:
-                    "451 Lê Văn Việt, Tăng Nhơn Phú A, thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam",
+                    "KTX Đại Học GTVT, Tăng Nhơn Phú A, Quận 9, Tp.HCM, Việt Nam",
                 destination:
-                    "Kí Túc Xã Đại Học Giao Thông Vận Tải Phiên Hiệu,Tăng Nhơn Phú A, Quận 9, Thành phố Hồ Chí Minh, Việt Nam",
+                    "451 Lê Văn Việt, Tăng Nhơn Phú A, Thành phố Thủ Đức, Tp.HCM, Việt Nam",
                 travelMode: "WALKING",
             };
             directionsService.route(request, function (response, status) {
@@ -75,7 +75,7 @@
             marker1.addListener("click", () => {
                 var infowindow = new google.maps.InfoWindow({
                     content:
-                        "MSV: 5951071019 <br> Name: Đinh Xuân Giang <br> Class: CNTT K59 <br> Date of birth:20/06/2000 <br> Email: 5951071019@st.utc2.edu.vn",
+                        "MSV: 5951071019 <br> Tên: Đinh Xuân Giang <br> Lớp: CNTT K59 <br> Ngày sinh: 20/06/2000 <br> Email: 5951071019@st.utc2.edu.vn",
                 });
 
                 infowindow.open(map, marker1);
