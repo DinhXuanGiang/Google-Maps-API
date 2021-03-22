@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>exerciseAPI</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        function initMap() {
+            const uluru = { lat: 10.845979424064046, lng: 106.7944824275496 };
+
+            const uluru1 = { lat: 10.843691985080875, lng: 106.79523348434412 };
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: uluru,
+            });
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+
+                animation: google.maps.Animation.BOUNCE,
+                icon: {
+                    url: "logogtvt.png",
+                    scaledSize: { width: 90, height: 90 },
+                },
+            });
+
+            const marker1 = new google.maps.Marker({
+                position: uluru1,
+                map: map,
+
+                animation: google.maps.Animation.BOUNCE,
+                icon: {
+                    url: "my_avatar.png",
+                    scaledSize: { width: 90, height: 90 },
+                },
+            });
+
+            const directionsService = new google.maps.DirectionsService();
+            const directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+
+            var request = {
+                origin:
+                    "451 Lê Văn Việt, Tăng Nhơn Phú A, thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam",
+                destination:
+                    "Kí Túc Xã Đại Học Giao Thông Vận Tải Phiên Hiệu,Tăng Nhơn Phú A, Quận 9, Thành phố Hồ Chí Minh, Việt Nam",
+                travelMode: "WALKING",
+            };
+            directionsService.route(request, function (response, status) {
+                if (status == "OK") {
+                    directionsRenderer.setDirections(response);
+                }
+            });
+
+            marker.addListener("click", () => {
+                var infowindow = new google.maps.InfoWindow({
+                    content:
+                        "Trường Đại học Giao thông Vận tải - Phân hiệu tại TP.HCM - UTC2.",
+                });
+
+                infowindow.open(map, marker);
+            });
+            marker1.addListener("click", () => {
+                var infowindow = new google.maps.InfoWindow({
+                    content:
+                        "MSV: 5951071019 <br> Name: Đinh Xuân Giang <br> Class: CNTT K59 <br> Date of birth:20/06/2000 <br> Email: 5951071019@st.utc2.edu.vn",
+                });
+
+                infowindow.open(map, marker1);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h3>Đây là nơi sẽ đặt bản đồ vào</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly"
+        async></script>
+</body>
+
+</html>
